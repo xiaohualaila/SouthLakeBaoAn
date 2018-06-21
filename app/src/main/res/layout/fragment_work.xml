@@ -14,11 +14,13 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_gravity="center_horizontal"
+             android:textColor="@color/black"
+             android:textSize="18sp"
              android:text="2018年6月"/>
-         <!--<android.support.v7.widget.RecyclerView-->
-             <!--android:id="@+id/rv_week"-->
-             <!--android:layout_width="match_parent"-->
-             <!--android:layout_height="wrap_content"/>-->
+         <android.support.v7.widget.RecyclerView
+             android:id="@+id/rv_week"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
 
          <LinearLayout
              android:layout_width="match_parent"
