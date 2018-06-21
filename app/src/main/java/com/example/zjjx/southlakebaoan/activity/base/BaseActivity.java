@@ -30,28 +30,24 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-
 import java.io.Serializable;
+import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected ViewHolder mViewHolder;
+
     private Toast mToast;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mViewHolder = new ViewHolder(getLayoutInflater(), null, getLayoutId());
-        setContentView(mViewHolder.getRootView());
-//        IMMLeaks.fixFocusedViewLeak(this.getApplication()); // 修复 InputMethodManager 引发的内存泄漏
+        setContentView(getLayoutId());
+        ButterKnife.bind( this );
 
         initDatas();
-        initViews(mViewHolder, mViewHolder.getRootView());
+        initViews();
     }
 
 
@@ -67,24 +63,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化 View， 调用位置在 initDatas 之后
      */
-    protected abstract void initViews(ViewHolder holder, View root);
+    protected abstract void initViews();
 
-
-    // 默认点击左上角是结束当前 Activity
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    public ViewHolder getViewHolder() {
-        return mViewHolder;
-    }
 
     /**
      * 发出一个短Toast
@@ -149,5 +129,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.putExtra(key, value);
         context.startActivity(intent);
     }
+
 
 }

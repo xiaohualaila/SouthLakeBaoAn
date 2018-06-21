@@ -20,7 +20,7 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 
-public class StartActivity extends AppCompatActivity implements DownApk.ProgressState{
+public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,51 +43,5 @@ public class StartActivity extends AppCompatActivity implements DownApk.Progress
         }
     };
 
-    public void getAppVersion(){
-        Api.getBaseApiWithOutFormat(ConnectUrl.URL)
-                .getAppVer()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<JSONObject>() {
-                               @Override
-                               public void call(JSONObject jsonObject) {
 
-                                   //
-                                   //下载更新
-                                   DownApk downApk = new DownApk("",getApplicationContext(), "");
-                                   downApk.downApk();
-                                   downApk.setProgressState(StartActivity.this);
-                               }
-                           }, new Action1<Throwable>() {
-                               @Override
-                               public void call(Throwable throwable) {
-
-                               }
-                           }
-                );
-    }
-
-
-    @Override
-    public void setSeek(int dl_progress) {
-        if (dl_progress >= 100) {
-            runOnUiThread( new Runnable() {
-                @Override
-                public void run() {
-                    // TODO Auto-generated method stub
-
-                    Toast.makeText(StartActivity.this,"下载完成",Toast.LENGTH_LONG);
-
-                }
-            } );
-        } else {
-            runOnUiThread( new Runnable() {
-                @Override
-                public void run() {
-//                    seek.setProgress( dl_progress );
-                }
-            } );
-
-        }
-    }
 }
