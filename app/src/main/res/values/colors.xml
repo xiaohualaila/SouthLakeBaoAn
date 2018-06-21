@@ -11,4 +11,7 @@
     <color name="black">#000000</color>
     <color name="colorRipple">#26FFFFFF</color>
     <color name="app_style_blue">#2196f3</color>
+    <color name="line_view">#E0E0E0</color>
+    <color name="line_yellow_green">#ffff8c</color>
+    <color name="picback">#ff8f00</color>
 </resources>

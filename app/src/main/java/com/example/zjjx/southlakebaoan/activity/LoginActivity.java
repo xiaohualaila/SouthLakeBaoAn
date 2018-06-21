@@ -58,16 +58,17 @@ public class LoginActivity extends BaseActivity implements DownApk.ProgressState
                 }
                 break;
             case R.id.login:
-                String ph =phone.getText().toString();
-                String p =password.getText().toString();
-                if(TextUtils.isEmpty(ph)){
-                    toastLong("手机号码或者身份证不能为空!");
-                    return;
-                }else if(TextUtils.isEmpty(p)){
-                    toastLong("密码不能为空!");
-                    return;
-                }
+//                String ph =phone.getText().toString();
+//                String p =password.getText().toString();
+//                if(TextUtils.isEmpty(ph)){
+//                    toastLong("手机号码或者身份证不能为空!");
+//                    return;
+//                }else if(TextUtils.isEmpty(p)){
+//                    toastLong("密码不能为空!");
+//                    return;
+//                }
                //todo登录
+                openActivity(MainActivity.class);
                 break;
             case R.id.forget:
                 openActivity(forgetActivity.class);
